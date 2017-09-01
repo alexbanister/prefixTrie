@@ -1,0 +1,28 @@
+{
+  "name": "completeme",
+  "version": "1.0.0",
+  "description": "Auto Complete prefix trie",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexbanister/completeMe.git"
+  },
+  "keywords": [
+    "prefix",
+    "auto-complete",
+    "trie"
+  ],
+  "author": "Alex Banister",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexbanister/completeMe/issues"
+  },
+  "homepage": "https://github.com/alexbanister/completeMe#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0"
+  }
+}
