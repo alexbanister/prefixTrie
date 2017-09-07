@@ -4,9 +4,6 @@
   "description": "Auto Complete prefix trie",
   "main": "index.js",
   "scripts": {
-    "deploy": "gh-pages -d dist",
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "build": "./node_modules/webpack/bin/webpack.js",
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register"
   },
   "repository": {
@@ -27,16 +24,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "chai": "^4.1.2",
-    "css-loader": "^0.28.7",
     "fs": "0.0.1-security",
-    "gh-pages": "^1.0.0",
-    "mocha": "^3.5.0",
-    "style-loader": "^0.18.2",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
-  },
-  "dependencies": {
-    "brfs": "^1.4.3",
-    "transform-loader": "^0.2.4"
+    "mocha": "^3.5.0"
   }
 }
