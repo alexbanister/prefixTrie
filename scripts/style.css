@@ -92,7 +92,7 @@ button {
   height: 70vh;
   padding: 2rem;
   padding-top: 2rem;
-  overflow-x: scroll;
+  overflow-y: scroll;
 }
 .selected {
   background: var(--green-grade);
