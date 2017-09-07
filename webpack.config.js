@@ -10,7 +10,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "transform-loader?brfs"
-      }
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" }
     ]
   },
   output: {

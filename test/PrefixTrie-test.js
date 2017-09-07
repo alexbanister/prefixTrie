@@ -10,6 +10,19 @@ describe('PrefixTrie', () => {
   beforeEach(() => {
     tree = new PrefixTrie();
   });
+  describe('Count', () => {
+    it('should add a word', function () {
+      assert.equal(tree.count(), 0);
+
+      tree.addWord('fuzzy');
+
+      assert.equal(tree.count(), 1);
+
+      tree.addWord('bunny');
+
+      assert.equal(tree.count(), 2);
+    });
+  });
 
   describe('add word', () => {
     it('should add a word', function () {
@@ -40,6 +53,26 @@ describe('PrefixTrie', () => {
       assert.equal(tree.root.f.letter, 'f');
       assert.equal(tree.root.f.u.z.z.endOfWord, true);
       assert.equal(tree.root.f.u.z.z.y.endOfWord, true);
+    });
+
+    it('should have subset words the other way', function () {
+      tree.addWord('fuzz');
+      tree.addWord('fuzzy');
+
+      assert.equal(tree.root.f.letter, 'f');
+      assert.equal(tree.root.f.u.z.z.endOfWord, true);
+      assert.equal(tree.root.f.u.z.z.y.endOfWord, true);
+    });
+
+    it('should do nothing if adding a word that exists', function () {
+      tree.addWord('fuzzy');
+
+      assert.equal(tree.root.f.letter, 'f');
+      assert.equal(tree.root.f.u.z.z.y.endOfWord, true);
+      assert.equal(tree.count(), 1);
+
+      tree.addWord('fuzzy');
+      assert.equal(tree.count(), 1);
     });
   });
 

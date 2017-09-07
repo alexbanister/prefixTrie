@@ -1,4 +1,5 @@
 const PrefixTrie = require('./PrefixTrie');
+const Style = require('./style.css');
 
 let dictionary = require('fs').readFileSync("/usr/share/dict/words", 'utf8').toString().trim().split('\n');
 let autoComplete = new PrefixTrie();

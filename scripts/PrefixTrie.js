@@ -68,12 +68,11 @@ class PrefixTrie {
     let sorted = suggestions.sort( (a, b) => {
       return b.selected - a.selected;
     });
-    let justWords = [];
 
-    sorted.forEach( (word) => {
-      justWords.push(word.word);
-    });
-    return justWords;
+    return sorted.reduce( (accum, nodeThing) => {
+      accum.push(nodeThing.word);
+      return accum;
+    }, []);
   }
 
   selectWord (word, value) {
@@ -87,6 +86,8 @@ class PrefixTrie {
   }
 
   populate (dictionary) {
+    dictionary.sort();
+
     dictionary.forEach( (word) => {
       this.addWord(word);
     });
