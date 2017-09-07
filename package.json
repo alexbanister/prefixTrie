@@ -1,5 +1,5 @@
 {
-  "name": "completeme",
+  "name": "PrefixTrie",
   "version": "1.0.0",
   "description": "Auto Complete prefix trie",
   "main": "index.js",
@@ -26,5 +26,9 @@
     "chai": "^4.1.2",
     "fs": "0.0.1-security",
     "mocha": "^3.5.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {}
 }
