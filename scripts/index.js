@@ -1,3 +1,3 @@
 const PrefixTrie = require('./PrefixTrie');
 
-export default PrefixTrie
+module.exports = PrefixTrie;

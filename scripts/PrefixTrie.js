@@ -97,4 +97,4 @@ class PrefixTrie {
   }
 }
 
-export default PrefixTrie
+module.exports = PrefixTrie;
