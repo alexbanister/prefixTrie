@@ -7,4 +7,4 @@ class PrefixTrieNode {
   }
 }
 
-module.exports = PrefixTrieNode;
+export default PrefixTrieNode
