@@ -1,3 +1,3 @@
-import PrefixTrie from './PrefixTrie';
+const PrefixTrie = require('./PrefixTrie');
 
 export default PrefixTrie
