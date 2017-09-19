@@ -28,9 +28,9 @@ describe('PrefixTrie', () => {
     it('should add a word', function () {
       tree.addWord('fuzzy');
 
-      assert.equal(tree.root.f.letter, 'f');
-      assert.equal(tree.root.f.u.letter, 'u');
-      assert.equal(tree.root.f.u.z.z.y.letter, 'y');
+      assert.equal(tree.children.f.letter, 'f');
+      assert.equal(tree.children.f.children.u.letter, 'u');
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.letter, 'y');
     });
 
     it('should add multiple words', function () {
@@ -39,36 +39,36 @@ describe('PrefixTrie', () => {
       tree.addWord('full');
       tree.addWord('duck');
 
-      assert.equal(tree.root.f.letter, 'f');
-      assert.equal(tree.root.f.u.z.z.letter, 'z');
-      assert.equal(tree.root.f.u.n.n.y.letter, 'y');
-      assert.equal(tree.root.f.u.l.l.letter, 'l');
-      assert.equal(tree.root.d.u.c.k.letter, 'k');
+      assert.equal(tree.children.f.letter, 'f');
+      assert.equal(tree.children.f.children.u.children.z.children.z.letter, 'z');
+      assert.equal(tree.children.f.children.u.children.n.children.n.children.y.letter, 'y');
+      assert.equal(tree.children.f.children.u.children.l.children.l.letter, 'l');
+      assert.equal(tree.children.d.children.u.children.c.children.k.letter, 'k');
     });
 
     it('should have subset words', function () {
       tree.addWord('fuzzy');
       tree.addWord('fuzz');
 
-      assert.equal(tree.root.f.letter, 'f');
-      assert.equal(tree.root.f.u.z.z.endOfWord, true);
-      assert.equal(tree.root.f.u.z.z.y.endOfWord, true);
+      assert.equal(tree.children.f.letter, 'f');
+      assert.equal(tree.children.f.children.u.children.z.children.z.endOfWord, true);
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.endOfWord, true);
     });
 
     it('should have subset words the other way', function () {
       tree.addWord('fuzz');
       tree.addWord('fuzzy');
 
-      assert.equal(tree.root.f.letter, 'f');
-      assert.equal(tree.root.f.u.z.z.endOfWord, true);
-      assert.equal(tree.root.f.u.z.z.y.endOfWord, true);
+      assert.equal(tree.children.f.letter, 'f');
+      assert.equal(tree.children.f.children.u.children.z.children.z.endOfWord, true);
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.endOfWord, true);
     });
 
     it('should do nothing if adding a word that exists', function () {
       tree.addWord('fuzzy');
 
-      assert.equal(tree.root.f.letter, 'f');
-      assert.equal(tree.root.f.u.z.z.y.endOfWord, true);
+      assert.equal(tree.children.f.letter, 'f');
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.endOfWord, true);
       assert.equal(tree.count(), 1);
 
       tree.addWord('fuzzy');
@@ -111,23 +111,22 @@ describe('PrefixTrie', () => {
     it('should increment a selected word', function () {
       tree.addWord('fuzzy');
       tree.selectWord('fuzzy', 1);
-
-      assert.equal(tree.root.f.u.z.z.y.selected, 1);
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.selected, 1);
 
       tree.selectWord('fuzzy', 1);
 
-      assert.equal(tree.root.f.u.z.z.y.selected, 2);
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.selected, 2);
     });
 
     it('should decrement a selected word', function () {
       tree.addWord('fuzzy');
       tree.selectWord('fuzzy', 1);
 
-      assert.equal(tree.root.f.u.z.z.y.selected, 1);
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.selected, 1);
 
       tree.selectWord('fuzzy', -1);
 
-      assert.equal(tree.root.f.u.z.z.y.selected, 0);
+      assert.equal(tree.children.f.children.u.children.z.children.z.children.y.selected, 0);
     });
 
     it('should sort by selected value', function () {
