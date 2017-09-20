@@ -5,6 +5,7 @@ class PrefixTrie {
     this.wordCount = 0;
     this.searchedWords = [];
     this.root = {};
+    this.children = {};
   }
 
   count() {
@@ -14,13 +15,13 @@ class PrefixTrie {
   addWord (word) {
     let letters = [ ...word.toLowerCase() ];
 
-    let currentNode = this.root;
+    let currentNode = this;
 
     for (let i = 0; i < letters.length; i++) {
-      if (!currentNode[letters[i]]) {
-        currentNode[letters[i]] = new PrefixTrieNode(letters[i]);
+      if (!currentNode.children[letters[i]]) {
+        currentNode.children[letters[i]] = new PrefixTrieNode(letters[i]);
       }
-      currentNode = currentNode[letters[i]];
+      currentNode = currentNode.children[letters[i]];
     }
     if (currentNode.endOfWord === false) {
       currentNode.endOfWord = true;
@@ -31,15 +32,15 @@ class PrefixTrie {
   getWords (word) {
     this.searchedWords = [];
     let prefix = [ ...word.toLowerCase() ];
-    let currentNode = this.root;
+    let currentNode = this;
 
     while (prefix.length > 0) {
       let letter = prefix.shift();
 
-      if (!currentNode[letter]) {
+      if (!currentNode.children[letter]) {
         return [];
       }
-      currentNode = currentNode[letter];
+      currentNode = currentNode.children[letter];
     }
     let newWord = word.slice(0, -1);
 
@@ -50,9 +51,9 @@ class PrefixTrie {
   }
 
   crawlWords (node, word) {
-    let letters = Object.keys(node);
+    let letters = Object.keys(node.children);
 
-    letters.splice(0, 3);
+    // letters.splice(0, 3);
 
     if (node.endOfWord === true) {
       let newWord = word + node.letter;
@@ -62,7 +63,7 @@ class PrefixTrie {
     for (let i = 0; i < letters.length; i++) {
       let growingWord = word + node.letter;
 
-      this.crawlWords(node[letters[i]], growingWord);
+      this.crawlWords(node.children[letters[i]], growingWord);
     }
   }
 
@@ -79,10 +80,10 @@ class PrefixTrie {
 
   selectWord (word, value) {
     let letters = [ ...word.toLowerCase() ];
-    let currentNode = this.root;
+    let currentNode = this;
 
     for (var i = 0; i < letters.length; i++) {
-      currentNode = currentNode[letters[i]];
+      currentNode = currentNode.children[letters[i]];
     }
     currentNode.selected += value;
   }

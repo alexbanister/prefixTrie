@@ -4,6 +4,7 @@ class PrefixTrieNode {
     this.letter = letter
     this.endOfWord = false;
     this.selected = 0;
+    this.children = {};
   }
 }
 
